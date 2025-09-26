@@ -37,8 +37,8 @@ const PageHeader = ({ icon: Icon, title, subtitle, onBack, count }) => {
           <Icon className="w-6 h-6" style={{color: '#165743'}} />
         </div>
         <div className="flex-1">
-          <h2 className="text-gray-700 text-xl sm:text-2xl font-semibold m-0">{title}</h2>
-          <p className="text-gray-500 text-sm m-0">
+          <h2 className="text-gray-700 text-lg sm:text-xl font-semibold m-0">{title}</h2>
+          <p className="text-gray-500 text-xs sm:text-xs m-0">
             {subtitle || (count !== undefined
               ? count > 0
                 ? `${count} ${count === 1 ? 'item' : 'itens'} encontrado${count === 1 ? '' : 's'}`
@@ -118,8 +118,8 @@ const MyTickets = ({ customerId }) => {
               <Ticket className="w-8 h-8" style={{color: '#165743'}} />
             </div>
             <div>
-              <h4 className="font-bold text-lg mb-2" style={{color: '#165743'}}>Nenhum Ingresso Encontrado</h4>
-              <p className="text-sm leading-relaxed mb-1" style={{color: 'rgba(22, 87, 67, 0.8)'}}>
+              <h4 className="font-bold text-sm sm:text-xs mb-2" style={{color: '#165743'}}>Nenhum Ingresso Encontrado</h4>
+              <p className="text-xs sm:text-xs leading-relaxed mb-1" style={{color: 'rgba(22, 87, 67, 0.8)'}}>
                 Você ainda não possui ingressos válidos.
               </p>
               <p className="text-xs" style={{color: 'rgba(22, 87, 67, 0.7)'}}>
@@ -140,7 +140,7 @@ const MyTickets = ({ customerId }) => {
                       <Ticket className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-sm m-0">Ingresso #{index + 1}</h4>
+                      <h4 className="text-white font-bold text-xs sm:text-xs m-0">Ingresso #{index + 1}</h4>
                       <p className="text-white text-opacity-90 text-xs m-0">{ticket.ticketTypeName}</p>
                     </div>
                   </div>
@@ -838,7 +838,7 @@ const TicketSelection = ({ tickets, loading, cart, addToCart, removeFromCart, up
       <div className="xl:hidden fixed bottom-4 left-4 right-4 z-40">
         {cart.length > 0 ? (
           <button
-            className="w-full text-white border-0 rounded-lg px-4 py-4 font-semibold cursor-pointer shadow-lg transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-xl text-sm sm:text-base"
+            className="w-full text-white border-0 rounded-lg px-4 py-4 font-semibold cursor-pointer shadow-lg transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-xl text-sm sm:text-xs"
             style={{backgroundColor: 'rgb(255, 122, 0)'}}
             onClick={() => setShowCartDropdown(true)}
           >
@@ -1338,7 +1338,7 @@ const getStatusColor = (status) => {
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
           {/* Header da tabela - Apenas Desktop */}
           <div className="hidden md:block bg-gray-50 px-6 py-4 border-b border-gray-200">
-            <div className="grid grid-cols-12 gap-4 items-center font-semibold text-gray-700 text-sm">
+            <div className="grid grid-cols-12 gap-4 items-center font-semibold text-gray-700 text-xs sm:text-xs">
               <div className="col-span-1"></div>
               <div className="col-span-3">Evento</div>
               <div className="col-span-2">Status</div>
@@ -1367,7 +1367,7 @@ const getStatusColor = (status) => {
 
                       {/* Nome do evento */}
                       <div className="col-span-3">
-                        <h3 className="text-gray-800 font-semibold text-sm">{order.eventName}</h3>
+                        <h3 className="text-gray-800 font-semibold text-xs sm:text-xs">{order.eventName}</h3>
                         <p className="text-gray-500 text-xs">#{order.id.slice(0, 8)}...</p>
                       </div>
 
@@ -1386,7 +1386,7 @@ const getStatusColor = (status) => {
 
                       {/* Data */}
                       <div className="col-span-2">
-                        <span className="text-gray-700 text-sm">{new Date(order.createdAt).toLocaleDateString('pt-BR')}</span>
+                        <span className="text-gray-700 text-xs sm:text-xs">{new Date(order.createdAt).toLocaleDateString('pt-BR')}</span>
                       </div>
 
                       {/* Ações */}
@@ -1425,7 +1425,7 @@ const getStatusColor = (status) => {
                         />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between mb-1">
-                            <h3 className="text-gray-800 font-semibold text-sm truncate">{order.eventName}</h3>
+                            <h3 className="text-gray-800 font-semibold text-xs truncate">{order.eventName}</h3>
                             <span className="text-white px-2 py-0.5 rounded text-xs font-bold uppercase ml-2 flex-shrink-0" style={getStatusColor(order.paymentStatus)}>
                               {getStatusText(order.paymentStatus)}
                             </span>
