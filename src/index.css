@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Teste básico para garantir que o CSS está carregando */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f0f0 !important; /* Fundo cinza para teste */
+}
+
+/* Classes de teste */
+.test-red {
+  background-color: red !important;
+  color: white !important;
+  padding: 20px !important;
+}
