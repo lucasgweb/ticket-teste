@@ -112,17 +112,17 @@ const MyTickets = ({ customerId }) => {
       />
 
       {tickets.length === 0 ? (
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 text-center">
+        <div className="border rounded-xl p-8 text-center" style={{backgroundColor: 'rgba(22, 87, 67, 0.05)', borderColor: 'rgba(22, 87, 67, 0.2)'}}>
           <div className="flex flex-col items-center gap-4">
-            <div className="p-3 bg-blue-100 rounded-full">
-              <Ticket className="w-8 h-8 text-blue-600" />
+            <div className="p-3 rounded-full" style={{backgroundColor: 'rgba(22, 87, 67, 0.1)'}}>
+              <Ticket className="w-8 h-8" style={{color: '#165743'}} />
             </div>
             <div>
-              <h4 className="text-blue-800 font-bold text-lg mb-2">Nenhum Ingresso Encontrado</h4>
-              <p className="text-blue-700 text-sm leading-relaxed mb-1">
+              <h4 className="font-bold text-lg mb-2" style={{color: '#165743'}}>Nenhum Ingresso Encontrado</h4>
+              <p className="text-sm leading-relaxed mb-1" style={{color: 'rgba(22, 87, 67, 0.8)'}}>
                 Você ainda não possui ingressos válidos.
               </p>
-              <p className="text-blue-600 text-xs">
+              <p className="text-xs" style={{color: 'rgba(22, 87, 67, 0.7)'}}>
                 Faça um pedido para adquirir seus ingressos!
               </p>
             </div>
