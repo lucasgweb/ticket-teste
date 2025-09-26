@@ -553,34 +553,52 @@ const MyOrders = ({ customerId, onViewOrder }) => {
     }
   };
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'APPROVED':
-      case 'PAID':
-        return 'bg-green-600';
-      case 'PENDING':
-        return 'bg-yellow-500';
-      case 'FAILED':
-        return 'bg-red-600';
-      default:
-        return 'bg-gray-500';
-    }
-  };
+const getStatusColor = (status) => {
+  switch (status) {
+    case "Authorized":
+    case "PaymentConfirmed":
+      return "bg-green-600";
+
+    case "Pending":
+    case "Scheduled":
+      return "bg-yellow-500";
+
+    case "Denied":
+    case "Voided":
+    case "Refunded":
+    case "Aborted":
+      return "bg-red-600";
+
+    case "NotFinished":
+    default:
+      return "bg-gray-500";
+  }
+};
+
 
   const getStatusText = (status) => {
-    switch (status) {
-      case 'APPROVED':
-      case 'PAID':
-        return 'Aprovado';
-      case 'PENDING':
-        return 'Pendente';
-      case 'FAILED':
-        return 'Falhou';
-      default:
-        return status;
-    }
-  };
+  switch (status) {
+    case "Authorized":
+    case "PaymentConfirmed":
+      return "Aprovado";
 
+    case "Pending":
+    case "Scheduled":
+      return "Pendente";
+
+    case "Denied":
+    case "Voided":
+    case "Refunded":
+    case "Aborted":
+      return "Falhou";
+
+    case "NotFinished":
+      return "Não finalizado";
+
+    default:
+      return status; // fallback, mostra o valor cru caso não mapeado
+  }
+};
   if (loading) {
     return <div className="text-center text-gray-500 text-xl p-12 bg-white rounded-xl shadow-sm">Carregando pedidos...</div>;
   }
@@ -633,7 +651,7 @@ const MyOrders = ({ customerId, onViewOrder }) => {
                 >
                   Ver Detalhes
                 </button>
-                {(order.paymentStatus === 'APPROVED' || order.paymentStatus === 'PAID') && (
+                {(order.paymentStatus === 'Authorized' || order.paymentStatus === 'PAID') && (
                   <button
                     className="flex-1 px-3 py-3 border-0 rounded-lg font-semibold cursor-pointer transition-all duration-200 text-sm bg-blue-600 text-white hover:bg-blue-700 hover:-translate-y-0.5"
                     onClick={() => onViewOrder(order)}
@@ -658,31 +676,49 @@ const MyOrders = ({ customerId, onViewOrder }) => {
 const OrderDetails = ({ order, onBack }) => {
   const getStatusColor = (status) => {
     switch (status) {
-      case 'APPROVED':
-      case 'PAID':
-        return 'bg-green-600';
-      case 'PENDING':
-        return 'bg-yellow-500';
-      case 'FAILED':
-        return 'bg-red-600';
+      case "Authorized":
+      case "PaymentConfirmed":
+        return "bg-green-600";
+
+      case "Pending":
+      case "Scheduled":
+        return "bg-yellow-500";
+
+      case "Denied":
+      case "Voided":
+      case "Refunded":
+      case "Aborted":
+        return "bg-red-600";
+
+      case "NotFinished":
       default:
-        return 'bg-gray-500';
+        return "bg-gray-500";
     }
   };
 
-  const getStatusText = (status) => {
-    switch (status) {
-      case 'APPROVED':
-      case 'PAID':
-        return 'Aprovado';
-      case 'PENDING':
-        return 'Pendente';
-      case 'FAILED':
-        return 'Falhou';
-      default:
-        return status;
-    }
-  };
+ const getStatusText = (status) => {
+  switch (status) {
+    case "Authorized":
+    case "PaymentConfirmed":
+      return "Aprovado";
+
+    case "Pending":
+    case "Scheduled":
+      return "Pendente";
+
+    case "Denied":
+    case "Voided":
+    case "Refunded":
+    case "Aborted":
+      return "Falhou";
+
+    case "NotFinished":
+      return "Não finalizado";
+
+    default:
+      return status; // fallback para qualquer valor inesperado
+  }
+};
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('pt-BR', {
